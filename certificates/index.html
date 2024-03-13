@@ -1,36 +1,30 @@
 <!DOCTYPE html>
+<!-- Coding by CodingLab || www.codinglabweb.com -->
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>My Certificates Portfolio</h1>
-        <div class="certificates">
-            <div class="certificate">
-                <img src="../images/mortg.jpeg" alt="Certificate 1">
-                <div class="description">
-                    <h2>Certificate Title 1</h2>
-                    <p>Description of Certificate 1</p>
-                </div>
+    <section class="wrapper">
+        <i class="fa-solid fa-arrow-left button" id="prev"></i>
+        <div class="image-container">
+            <div class="carousel">
+                <img src="images/Agile_Project_Management_E-Certificate.jpg" alt="" />
+                <img src="images/Foundations_of_Project_Management_E-Certificate.jpg" alt="" />
+                <img src="images/Project_Communication_and_Stakeholder_Management_E-Certificate.jpg" alt="" />
+                <img src="images/Project_Scope_and_Schedule_Management_E-Certificate.jpg" alt="" />
             </div>
-            <div class="certificate">
-                <img src="certificate2.jpg" alt="Certificate 2">
-                <div class="description">
-                    <h2>Certificate Title 2</h2>
-                    <p>Description of Certificate 2</p>
-                </div>
-            </div>
-            <!-- Add more certificates as needed -->
+            <i class="fa-solid fa-arrow-right button" id="next"></i>
         </div>
-    </div>
-
-    <script src="script.js"></script>
+    </section>
 </body>
 
 </html>
