@@ -55,8 +55,8 @@ i#next {
 }
 
 .image-container {
-  height: 640px;
-  max-width: 1000px;
+  height: 60vw;
+  max-width: 70vw;
   width: 100%;
   overflow: hidden;
 }
