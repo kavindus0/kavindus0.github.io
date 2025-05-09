@@ -41,7 +41,11 @@ footer .fp-tableCell {
 /* end all section */
 
 /* start all heading */
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     color: #ffffff;
     font-weight: bold;
 }
@@ -49,7 +53,11 @@ h1, h2, h3, h4, h5 {
 /* end all heading */
 
 /* start all section */
-#work, #about, #portfolio, #contact, #certificates {
+#work,
+#about,
+#portfolio,
+#contact,
+#certificates {
     padding-top: 100px;
     padding-bottom: 120px;
 }
@@ -81,7 +89,8 @@ h1, h2, h3, h4, h5 {
     position: relative;
 }
 
-.rotating .front, .rotating .back {
+.rotating .front,
+.rotating .back {
     left: 0;
     top: 0;
     -webkit-backface-visibility: hidden;
@@ -425,3 +434,292 @@ footer hr {
 }
 
 /* end social icon */
+
+/* Mobile-friendly improvements */
+@media (max-width: 768px) {
+    #home h1 {
+        font-size: 32px;
+        padding: 15px 25px;
+        letter-spacing: 4px;
+    }
+
+    #home h2 {
+        font-size: 20px;
+    }
+
+    .portfolio-thumb {
+        margin-bottom: 20px;
+    }
+
+    .media {
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+}
+
+/* Touch-friendly interactions */
+.btn,
+.portfolio-thumb,
+.media .fa,
+.social-icon li a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.portfolio-thumb {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-thumb:active {
+    transform: scale(0.98);
+}
+
+.media .fa {
+    transition: all 0.3s ease;
+}
+
+.media .fa:active {
+    transform: scale(0.95);
+}
+
+/* Smooth scrolling for mobile */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Improved mobile navigation */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #work,
+    #about,
+    #portfolio,
+    #contact,
+    #certificates {
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
+
+    .portfolio-overlay {
+        padding: 15px;
+    }
+
+    .portfolio-overlay h4 {
+        font-size: 18px;
+    }
+
+    .portfolio-overlay h5 {
+        font-size: 14px;
+    }
+}
+
+/* Enhanced touch feedback */
+.btn:active,
+.portfolio-thumb:active,
+.media .fa:active,
+.social-icon li a:active {
+    opacity: 0.8;
+}
+
+/* Improved mobile form elements */
+@media (max-width: 768px) {
+    .form-control {
+        font-size: 16px;
+        /* Prevents iOS zoom on focus */
+        padding: 12px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 768px) {
+
+    /* Improved text readability */
+    body {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* Better spacing for mobile */
+    .container {
+        width: 95%;
+        max-width: 100%;
+    }
+
+    /* Enhanced portfolio items */
+    .portfolio-thumb {
+        margin: 10px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .portfolio-thumb img {
+        border-radius: 8px;
+    }
+
+    /* Improved button styles */
+    .btn {
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Better media icons */
+    .media .fa {
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+        font-size: 20px;
+    }
+
+    /* Enhanced section headings */
+    h2 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    /* Improved progress bars */
+    .progress {
+        height: 6px;
+        margin: 15px 0;
+    }
+}
+
+/* Touch animations */
+.touch-active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+/* Loading animation for mobile */
+@keyframes mobileLoad {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+
+    #home,
+    #work,
+    #about,
+    #portfolio,
+    #contact,
+    #certificates {
+        animation: mobileLoad 0.5s ease-out;
+    }
+}
+
+/* Improved mobile navigation dots */
+@media (max-width: 768px) {
+    #fp-nav ul li a span {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    #fp-nav ul li a.active span {
+        background: #D43F52;
+    }
+}
+
+/* Enhanced mobile form elements */
+@media (max-width: 768px) {
+    .form-control:focus {
+        border-color: #D43F52;
+        box-shadow: 0 0 0 2px rgba(212, 63, 82, 0.2);
+    }
+
+    input[type="submit"] {
+        border-radius: 25px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+}
+
+/* Mobile menu improvements */
+@media (max-width: 768px) {
+    .social-icon li a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+    }
+}
+
+/* Refresh indicator styles */
+.refresh-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #D43F52;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.refresh-indicator.refreshing {
+    animation: refreshLoading 1.5s ease infinite;
+}
+
+@keyframes refreshLoading {
+    0% {
+        transform: translateY(0) scaleX(0);
+    }
+
+    50% {
+        transform: translateY(0) scaleX(1);
+    }
+
+    100% {
+        transform: translateY(0) scaleX(0);
+    }
+}
+
+/* Image loading animation */
+img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Mobile touch feedback */
+.touch-active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+/* Mobile scroll performance */
+@media (max-width: 768px) {
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .container {
+        will-change: transform;
+    }
+}
