@@ -723,3 +723,56 @@ img.loaded {
         will-change: transform;
     }
 }
+
+/* Certificate Carousel Styles */
+#certificateCarousel {
+    margin: 0 auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#certificateCarousel .carousel-item {
+    height: 500px;
+    background: #f8f9fa;
+}
+
+#certificateCarousel .carousel-item img {
+    height: 100%;
+    object-fit: contain;
+    background: white;
+}
+
+#certificateCarousel .carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 5px;
+    bottom: 20px;
+}
+
+#certificateCarousel .carousel-caption h4 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+#certificateCarousel .carousel-caption h5 {
+    margin: 0;
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+#certificateCarousel .carousel-control-prev,
+#certificateCarousel .carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+}
+
+#certificateCarousel .carousel-indicators {
+    bottom: 10px;
+}
+
+#certificateCarousel .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
