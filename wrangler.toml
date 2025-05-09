@@ -1,4 +1,11 @@
 name = "kavindus0portf"
+account_id = "60ced166cee6d5f40c924038347dac5c"
 compatibility_date = "2025-05-09"
+
 [site]
-bucket = "./"
+bucket = "./"       # root folder containing index.html
+entry-point = "."    # not needed for static sites, but Wrangler needs it
+
+[deploy]
+zone_id = "d2a6443b680ae04d6c2d4eb0f4ede574"
+custom_domain = "kavindus.me"
