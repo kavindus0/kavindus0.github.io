@@ -1,0 +1,4 @@
+name = "kavindus0portf"
+compatibility_date = "2025-05-09"
+[site]
+bucket = "./"
