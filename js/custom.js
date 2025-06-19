@@ -1,4 +1,5 @@
 //
+/*
 $(document).ready(function () {
 	$('#fullpage').fullpage({
 		'verticalCentered': false,
@@ -9,12 +10,15 @@ $(document).ready(function () {
 		'navigationPosition': 'right',
 	});
 });
+*/
 
 // wow
+/*
 $(function () {
 	new WOW().init();
 	$(".rotate").textrotator();
 })
+*/
 
 // Mobile-friendly interactions
 document.addEventListener('DOMContentLoaded', function () {
@@ -82,7 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	// Add pull-to-refresh functionality
+	// Add pull-to-refresh functionality (Commented out)
+	/*
 	let touchStartY = 0;
 	let touchEndY = 0;
 	const body = document.body;
@@ -104,11 +109,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	body.addEventListener('touchend', () => {
 		body.style.transform = '';
 	});
+	*/
 });
 
 // Enhanced mobile interactions
 document.addEventListener('DOMContentLoaded', function () {
-	// Add parallax effect for mobile
+	// Add parallax effect for mobile (Commented out)
+	/*
 	const parallaxElements = document.querySelectorAll('#home, .portfolio-thumb');
 	window.addEventListener('scroll', () => {
 		parallaxElements.forEach(element => {
@@ -117,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			element.style.transform = `translateY(${yPos}px)`;
 		});
 	});
+	*/
 
 	// Add touch feedback for all interactive elements
 	const interactiveElements = document.querySelectorAll('.btn, .portfolio-thumb, .media .fa, .social-icon li a, input[type="submit"]');
@@ -169,7 +177,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
-	// Enhanced mobile navigation
+	// Enhanced mobile navigation (Commented out as #fp-nav is related to fullPage.js)
+	/*
 	const navLinks = document.querySelectorAll('#fp-nav ul li a');
 	navLinks.forEach(link => {
 		link.addEventListener('touchstart', function () {
@@ -177,8 +186,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.classList.add('active');
 		});
 	});
+	*/
 
-	// Add pull-to-refresh with loading indicator
+	// Add pull-to-refresh with loading indicator (Commented out)
+	/*
 	let isRefreshing = false;
 	const refreshIndicator = document.createElement('div');
 	refreshIndicator.className = 'refresh-indicator';
@@ -222,4 +233,5 @@ document.addEventListener('DOMContentLoaded', function () {
 			pullDistance = 0;
 		}
 	});
+	*/
 });

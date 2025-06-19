@@ -1,12 +1,15 @@
 // Typing animation for hero section
 const dynamicText = document.querySelector('.dynamic-text');
-const words = ['Flutter Developer', 'AI/ML Enthusiast', 'IT Consultant'];
+// const words = ['Flutter Developer', 'AI/ML Enthusiast', 'IT Consultant']; // Original words
+// Updated words to match hero section typing text from index.html
+const words = dynamicText && dynamicText.dataset.texts ? JSON.parse(dynamicText.dataset.texts) : ['intuitive experiences', 'engaging interfaces', 'human-centered AI'];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 let typingDelay = 200;
 
 function typeEffect() {
+    if (!dynamicText) return; // Guard clause if element doesn't exist
     const currentWord = words[wordIndex];
 
     if (isDeleting) {
@@ -21,17 +24,18 @@ function typeEffect() {
 
     if (!isDeleting && charIndex === currentWord.length) {
         isDeleting = true;
-        typingDelay = 1500;
+        typingDelay = 1500; // Pause at end of word
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         wordIndex = (wordIndex + 1) % words.length;
-        typingDelay = 500;
+        typingDelay = 500; // Delay before typing new word
     }
 
     setTimeout(typeEffect, typingDelay);
 }
 
-// Enhanced scroll animations
+// Commented out: Enhanced scroll animations (animateOnScroll)
+/*
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.skill-card, .project-card, .certificate-card, .section-title, .about-content, .contact-content');
 
@@ -58,8 +62,10 @@ const animateOnScroll = () => {
         }
     });
 };
+*/
 
-// Parallax effect for hero section
+// Commented out: Parallax effect for hero section
+/*
 const handleParallax = () => {
     const hero = document.querySelector('.hero');
     const shapes = document.querySelectorAll('.shape');
@@ -77,14 +83,15 @@ const handleParallax = () => {
         });
     });
 };
+*/
 
-// Smooth scrolling with enhanced animation
+// Smooth scrolling with enhanced animation (Kept)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const headerOffset = 100;
+            const headerOffset = 80; // Adjusted for potentially fixed navbar height
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -96,62 +103,75 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Certificate Slider
+// Certificate Slider (Kept, minor robustness check)
 const initCertificateSlider = () => {
     const slider = document.querySelector('.certificates-slider');
-    const cards = document.querySelectorAll('.certificate-card');
+    if (!slider) return; // Guard clause
+
+    const cards = slider.querySelectorAll('.certificate-card');
+    if (cards.length === 0) return; // No cards to slide
+
     let currentIndex = 0;
 
-    // Create navigation buttons
-    const nav = document.createElement('div');
-    nav.className = 'certificate-nav';
-    nav.innerHTML = `
-        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-    `;
-    slider.parentElement.appendChild(nav);
+    // Create navigation buttons if they don't exist (idempotency)
+    let nav = slider.parentElement.querySelector('.certificate-nav');
+    if (!nav) {
+        nav = document.createElement('div');
+        nav.className = 'certificate-nav'; // CSS can target this
+        nav.innerHTML = `
+            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+        `;
+        slider.parentElement.appendChild(nav);
+    }
 
     const prevBtn = nav.querySelector('.prev-btn');
     const nextBtn = nav.querySelector('.next-btn');
 
     // Function to update slider position
     const updateSlider = () => {
-        const cardWidth = cards[0].offsetWidth;
-        const gap = parseInt(getComputedStyle(slider).gap);
-        const offset = currentIndex * (cardWidth + gap);
-
+        // This implementation assumes a horizontal scroll.
+        // For a more robust slider, consider libraries or more complex calculations for visible cards.
+        // The current CSS will likely handle the visual presentation (e.g., overflow hidden on slider).
+        // This JS part is mainly for controlling which card is "active" or "current".
         cards.forEach((card, index) => {
-            card.style.transform = `translateX(-${offset}px)`;
-            card.style.opacity = index === currentIndex ? '1' : '0.5';
-            card.style.scale = index === currentIndex ? '1' : '0.9';
+            if (index === currentIndex) {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)'; // Example active style
+            } else {
+                card.style.opacity = '0.7'; // Example inactive style
+                card.style.transform = 'scale(0.95)'; // Example inactive style
+            }
         });
+        // Note: Actual "sliding" might be better handled by CSS transitions on a container,
+        // or by adjusting scrollLeft if it's a scrollable container.
+        // The original script's translateX might not work as expected without specific CSS.
+        // For now, focusing on opacity/scale changes.
     };
+
+    if (cards.length > 0) { // Only init if cards exist
+        updateSlider(); // Initial call
+    }
+
 
     // Event listeners for navigation
     prevBtn.addEventListener('click', () => {
-        currentIndex = Math.max(0, currentIndex - 1);
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length; // Loop
         updateSlider();
     });
 
     nextBtn.addEventListener('click', () => {
-        currentIndex = Math.min(cards.length - 1, currentIndex + 1);
+        currentIndex = (currentIndex + 1) % cards.length; // Loop
         updateSlider();
     });
 
-    // Initialize slider
-    updateSlider();
-
-    // Auto-advance slider
+    // Auto-advance slider (optional, can be kept or removed)
     let autoSlideInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % cards.length;
         updateSlider();
     }, 5000);
 
-    // Pause auto-advance on hover
-    slider.addEventListener('mouseenter', () => {
-        clearInterval(autoSlideInterval);
-    });
-
+    slider.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
     slider.addEventListener('mouseleave', () => {
         autoSlideInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % cards.length;
@@ -160,7 +180,9 @@ const initCertificateSlider = () => {
     });
 };
 
-// Interactive Background
+
+// Commented out: Interactive Background
+/*
 const initInteractiveBackground = () => {
     const shapes = document.querySelectorAll('.bg-shape');
     const container = document.querySelector('.interactive-bg');
@@ -178,10 +200,13 @@ const initInteractiveBackground = () => {
         });
     });
 };
+*/
 
-// Cursor Follower
+// Commented out: Cursor Follower
+/*
 const initCursorFollower = () => {
     const cursor = document.querySelector('.cursor-follower');
+    if (!cursor) return;
     let mouseX = 0;
     let mouseY = 0;
     let cursorX = 0;
@@ -193,37 +218,31 @@ const initCursorFollower = () => {
     });
 
     const animate = () => {
-        // Smooth cursor movement
         const dx = mouseX - cursorX;
         const dy = mouseY - cursorY;
-
         cursorX += dx * 0.1;
         cursorY += dy * 0.1;
-
         cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-
         requestAnimationFrame(animate);
     };
-
     animate();
 
-    // Cursor effects on interactive elements
     const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-card, .certificate-card');
-
     interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
             cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) scale(1.5)`;
             cursor.style.opacity = '0.5';
         });
-
         element.addEventListener('mouseleave', () => {
             cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) scale(1)`;
             cursor.style.opacity = '0.5';
         });
     });
 };
+*/
 
-// Enhanced Project Card Animations
+// Commented out: Enhanced Project Card Animations (initProjectCards)
+/*
 const initProjectCards = () => {
     const cards = document.querySelectorAll('.project-card');
 
@@ -253,45 +272,39 @@ const initProjectCards = () => {
         });
     });
 };
+*/
 
-// Enhanced Scroll Animations
-const enhanceScrollAnimations = () => {
-    const elements = document.querySelectorAll('.section-title, .about-content, .skill-card, .project-card, .certificate-card, .contact-item');
+// Refined Scroll Animations (initScrollAnimations)
+const initScrollAnimations = () => {
+    const elementsToAnimate = document.querySelectorAll('.skill-card, .project-card, .certificate-card, .section-title, .about-text > p, .about-stats .stat-item, .contact-info .contact-item, .contact-form > input, .contact-form > textarea, .hero-text > *, .footer-content > *');
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                if (entry.target.classList.contains('section-title')) {
-                    entry.target.classList.add('slide-in');
-                } else if (entry.target.classList.contains('about-content')) {
-                    entry.target.classList.add('slide-up');
-                } else if (entry.target.classList.contains('skill-card') ||
-                    entry.target.classList.contains('project-card') ||
-                    entry.target.classList.contains('certificate-card')) {
-                    entry.target.classList.add('rotate-in');
-                }
+                entry.target.classList.add('fade-in-element', 'is-visible');
+                observer.unobserve(entry.target); // Optional: stop observing after animation
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.1 // Trigger when 10% of the element is visible
     });
 
-    elements.forEach(element => {
+    elementsToAnimate.forEach(element => {
+        element.classList.add('fade-in-element'); // Add base class for initial hidden state
         observer.observe(element);
     });
 };
 
-// Initialize all features
+// Initialize features
 window.addEventListener('load', () => {
     typeEffect();
-    handleParallax();
-    initInteractiveBackground();
-    initCursorFollower();
-    initScrollAnimations();
-    enhanceProjectCards();
+    // handleParallax(); // Commented out
+    // initInteractiveBackground(); // Commented out
+    // initCursorFollower(); // Commented out
+    initScrollAnimations(); // Replaces enhanceScrollAnimations and animateOnScroll
+    // initProjectCards(); // Commented out
     initCertificateSlider();
 });
 
-// Add scroll event listener for animations
-window.addEventListener('scroll', animateOnScroll); 
+// Commented out: Add scroll event listener for animations (animateOnScroll)
+// window.addEventListener('scroll', animateOnScroll);
