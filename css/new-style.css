@@ -11,10 +11,13 @@
 :root {
     --primary-background: #FFFFFF;
     --text-primary-color: #202124;
-    --text-primary-color-rgb: 32, 33, 36; /* For use in rgba */
+    --text-primary-color-rgb: 32, 33, 36;
+    /* For use in rgba */
     --text-secondary-color: #5f6368;
-    --accent-color: #5A7DBC;
-    --accent-color-rgb: 90, 125, 188; /* For use in rgba */
+    --accent-color: #888888;
+    /* Changed from blue to modern grey */
+    --accent-color-rgb: 136, 136, 136;
+    /* For use in rgba */
     --light-gray-background: #F1F3F4;
     --border-color: #DADCE0;
     --heading-font: 'Manrope', sans-serif;
@@ -50,7 +53,8 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: #4a6aaa; /* Darken accent color, direct value as darken() is SASS */
+    color: #444444;
+    /* Darken accent color, now a dark grey */
 }
 
 img {
@@ -60,7 +64,12 @@ img {
 }
 
 /* 3. Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--heading-font);
     color: var(--text-primary-color);
     margin-top: 1.5em;
@@ -69,12 +78,29 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-h1 { font-size: 3rem; }
-h2 { font-size: 2.25rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
 
 p {
     margin-bottom: 1rem;
@@ -93,8 +119,9 @@ p {
     transition: box-shadow var(--transition-speed) ease;
 }
 
-.navbar.scrolled { /* Example: Add shadow on scroll, requires JS */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+.navbar.scrolled {
+    /* Example: Add shadow on scroll, requires JS */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
 }
 
 .nav-content {
@@ -136,7 +163,8 @@ p {
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -2px; /* Adjust based on padding */
+    bottom: -2px;
+    /* Adjust based on padding */
     left: 50%;
     transform: translateX(-50%);
     width: 0;
@@ -153,26 +181,33 @@ p {
 /* 5. Hero Section */
 .hero {
     background-color: var(--light-gray-background);
-    min-height: 90vh; /* Reduced from 100vh to account for navbar */
-    padding: 8rem 2rem 4rem; /* More padding top, less bottom */
-    display: flex; /* Use flex for centering */
+    min-height: 90vh;
+    /* Reduced from 100vh to account for navbar */
+    padding: 8rem 2rem 4rem;
+    /* More padding top, less bottom */
+    display: flex;
+    /* Use flex for centering */
     align-items: center;
     justify-content: center;
-    text-align: center; /* Center text for hero */
+    text-align: center;
+    /* Center text for hero */
 }
 
 .hero-content {
-    max-width: 800px; /* Constrain width for better readability */
+    max-width: 800px;
+    /* Constrain width for better readability */
 }
 
 .hero-text h1 {
-    font-size: 3.5rem; /* Slightly larger for impact */
+    font-size: 3.5rem;
+    /* Slightly larger for impact */
     margin-bottom: 1rem;
     line-height: 1.2;
 }
 
 .typing-text {
-    font-size: 1.25rem; /* Adjusted size */
+    font-size: 1.25rem;
+    /* Adjusted size */
     margin-bottom: 1.5rem;
     color: var(--text-secondary-color);
 }
@@ -195,12 +230,14 @@ p {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: center; /* Center buttons */
+    justify-content: center;
+    /* Center buttons */
 }
 
 .btn {
     padding: 0.9rem 2rem;
-    border-radius: 8px; /* Softer radius */
+    border-radius: 8px;
+    /* Softer radius */
     font-weight: 600;
     text-decoration: none;
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease;
@@ -211,15 +248,23 @@ p {
 }
 
 .primary-btn {
-    background-color: var(--accent-color);
-    color: var(--primary-background);
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-family: var(--body-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+    box-shadow: none;
 }
 
 .primary-btn:hover {
-    background-color: #4a6aaa; /* Darken accent */
-    color: var(--primary-background);
-    transform: translateY(-2px);
-    text-decoration: none;
+    background: #444444;
+    /* Darker grey for hover */
+    color: #fff;
 }
 
 /* 9. Projects Section */
@@ -233,7 +278,8 @@ p {
     background-color: var(--primary-background);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    overflow: hidden; /* To contain image hover effect */
+    overflow: hidden;
+    /* To contain image hover effect */
     transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
     display: flex;
     flex-direction: column;
@@ -246,7 +292,8 @@ p {
 
 .project-image {
     width: 100%;
-    height: 220px; /* Fixed height for consistency */
+    height: 220px;
+    /* Fixed height for consistency */
     overflow: hidden;
     position: relative;
 }
@@ -254,17 +301,20 @@ p {
 .project-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the area, might crop */
+    object-fit: cover;
+    /* Cover the area, might crop */
     transition: transform var(--transition-speed) ease;
 }
 
 .project-card:hover .project-image img {
-    transform: scale(1.05); /* Subtle zoom on hover */
+    transform: scale(1.05);
+    /* Subtle zoom on hover */
 }
 
 .project-info {
     padding: 1.5rem;
-    flex-grow: 1; /* Allow info to take remaining space */
+    flex-grow: 1;
+    /* Allow info to take remaining space */
     display: flex;
     flex-direction: column;
 }
@@ -278,23 +328,27 @@ p {
 .project-info p {
     font-size: 0.95rem;
     margin-bottom: 1rem;
-    flex-grow: 1; /* Push tags to bottom */
+    flex-grow: 1;
+    /* Push tags to bottom */
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: auto; /* Push tags to bottom if p is short */
+    margin-top: auto;
+    /* Push tags to bottom if p is short */
 }
 
 .project-tags span {
-    background-color: var(--light-gray-background);
-    color: var(--text-secondary-color);
-    border-radius: 15px;
-    padding: 0.4rem 0.9rem; /* Slightly more padding */
-    font-size: 0.75rem; /* Smaller font for tags */
-    font-weight: 500;
+    background: #e0e0e0;
+    color: #222;
+    border-radius: 2px;
+    padding: 0.2em 0.7em;
+    font-size: 0.85em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    display: inline-block;
 }
 
 .project-overlay {
@@ -316,42 +370,51 @@ p {
 }
 
 .project-links a {
-    color: var(--primary-background);
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
-    transition: transform var(--transition-speed) ease;
+    color: var(--accent-color);
+    background: #fff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin: 0 0.25rem;
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .project-links a:hover {
-    transform: scale(1.1);
-    text-decoration: none;
+    background: var(--accent-color);
+    color: #fff;
 }
 
 /* 10. Certificates Section */
-.certificates-slider { /* Assuming this might be a slider, basic grid for now */
+.certificates-slider {
+    /* Assuming this might be a slider, basic grid for now */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
 .certificate-card {
-    background-color: var(--primary-background);
+    background: #fff;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
-    position: relative; /* For info overlay */
+    border-radius: 8px;
+    box-shadow: none;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .certificate-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(var(--text-primary-color-rgb), 0.07);
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 12px rgba(var(--accent-color-rgb), 0.08);
 }
 
 .certificate-card img {
     width: 100%;
-    height: auto; /* Adjust if images have different aspect ratios */
-    aspect-ratio: 16/10; /* Or a fixed height */
+    height: auto;
+    /* Adjust if images have different aspect ratios */
+    aspect-ratio: 16/10;
+    /* Or a fixed height */
     object-fit: cover;
 }
 
@@ -360,7 +423,8 @@ p {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 1rem 1rem; /* Adjust padding */
+    padding: 1.5rem 1rem 1rem;
+    /* Adjust padding */
     background: linear-gradient(to top, rgba(var(--text-primary-color-rgb), 0.85) 0%, rgba(var(--text-primary-color-rgb), 0.7) 50%, transparent 100%);
     color: var(--primary-background);
     text-align: center;
@@ -370,24 +434,29 @@ p {
     font-size: 1.1rem;
     margin-top: 0;
     margin-bottom: 0.25rem;
-    color: var(--primary-background); /* Ensure heading is white */
+    color: var(--primary-background);
+    /* Ensure heading is white */
     font-weight: 600;
 }
 
 .certificate-info p {
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.85); /* Lighter white for subtitle */
+    color: rgba(255, 255, 255, 0.85);
+    /* Lighter white for subtitle */
     margin-bottom: 0;
 }
 
 /* 11. Contact Section */
 .contact-content {
     display: grid;
-    grid-template-columns: 1fr; /* Single column default */
+    grid-template-columns: 1fr;
+    /* Single column default */
     gap: 3rem;
 }
 
-@media (min-width: 992px) { /* Two columns on larger screens */
+@media (min-width: 992px) {
+
+    /* Two columns on larger screens */
     .contact-content {
         grid-template-columns: 1fr 2fr;
     }
@@ -397,340 +466,16 @@ p {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1.5rem; /* Space between items */
-    font-size: 1.05rem;
-}
-
-.contact-info .contact-item i {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    width: 25px; /* Fixed width for alignment */
-    text-align: center;
-}
-
-.contact-info .contact-item p {
-    margin-bottom: 0;
-    color: var(--text-primary-color);
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--light-gray-background);
-    font-family: var(--body-font);
-    font-size: 1rem;
-    color: var(--text-primary-color);
-    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.2);
-}
-
-.contact-form textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.contact-form .btn.primary-btn { /* Ensure button in form takes full width or aligns well */
-    width: auto; /* Or 100% if desired */
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-}
-
-/* 12. Footer */
-.footer {
-    background-color: var(--text-primary-color);
-    color: var(--light-gray-background);
-    padding: 3rem 2rem;
-    text-align: center;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-logo {
-    font-family: var(--heading-font);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--light-gray-background);
-    margin-bottom: 1rem;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem; /* Space between icons */
     margin-bottom: 1.5rem;
-}
-
-.social-links a {
-    color: var(--light-gray-background);
-    font-size: 1.5rem; /* Icon size */
-    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
-}
-
-.social-links a:hover {
-    color: var(--accent-color);
-    transform: translateY(-3px);
-    text-decoration: none;
-}
-
-.copyright {
-    font-size: 0.9rem;
-    color: rgba(241, 243, 244, 0.7); /* Lighter text for copyright */
-    margin-bottom: 0;
-}
-
-/* 13. Animations & Transitions (Simplified) */
-/* Using transitions defined on elements directly (e.g., .btn, .card:hover) */
-
-/* Basic fade-in for elements if scroll animations are used by JS */
-.fade-in-element {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.fade-in-element.is-visible { /* Class added by JS when element is in viewport */
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive adjustments */
-@media (max-width: 991px) {
-    .hero-text h1 { font-size: 2.8rem; }
-    .section-title { font-size: 2rem; }
-}
-
-@media (max-width: 767px) {
-    body { font-size: 15px; }
-    .hero { padding-top: 6rem; padding-bottom: 3rem; min-height: 80vh; }
-    .hero-text h1 { font-size: 2.2rem; }
-    .typing-text { font-size: 1.1rem; }
-    .hero-description { font-size: 1rem; }
-
-    .nav-content { padding: 0 1rem; }
-    .nav-links { display: none; /* Simplification: Hide for mobile, implement toggle if needed */ }
-    .logo { font-size: 1.5rem; }
-
-    section { padding: 3rem 1rem; }
-    .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
-
-    .about-content { grid-template-columns: 1fr; text-align: center; }
-    .about-image { margin-bottom: 2rem; }
-
-    .skills-grid, .projects-grid, .certificates-slider {
-        grid-template-columns: 1fr; /* Stack cards on mobile */
-        gap: 1.5rem;
-    }
-
-    .contact-content { grid-template-columns: 1fr; }
-    .contact-info { margin-bottom: 2rem; }
-}
-
-/* Remove any complex animations from original new-style.css if they interfere */
-/* Example: .skill-card:hover animation: glowPulse ... (removed) */
-/* Example: .project-card:hover animation: glowPulse ... (removed) */
-
-/* Ensure progress bar animation is simple or removed if too distracting */
-.progress-bar {
-    /* Remove glowPulse or other complex animations if they were here */
-    /* A simple width transition can be handled by JS if needed */
-}
-
-/* 9. Projects Section */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background-color: var(--primary-background);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden; /* To contain image hover effect */
-    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(var(--text-primary-color-rgb), 0.07);
-}
-
-.project-image {
-    width: 100%;
-    height: 220px; /* Fixed height for consistency */
-    overflow: hidden;
-    position: relative;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover the area, might crop */
-    transition: transform var(--transition-speed) ease;
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.05); /* Subtle zoom on hover */
-}
-
-.project-info {
-    padding: 1.5rem;
-    flex-grow: 1; /* Allow info to take remaining space */
-    display: flex;
-    flex-direction: column;
-}
-
-.project-info h3 {
-    font-size: 1.3rem;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
-
-.project-info p {
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    flex-grow: 1; /* Push tags to bottom */
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto; /* Push tags to bottom if p is short */
-}
-
-.project-tags span {
-    background-color: var(--light-gray-background);
-    color: var(--text-secondary-color);
-    border-radius: 15px;
-    padding: 0.4rem 0.9rem; /* Slightly more padding */
-    font-size: 0.75rem; /* Smaller font for tags */
-    font-weight: 500;
-}
-
-.project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--text-primary-color-rgb), 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity var(--transition-speed) ease;
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-links a {
-    color: var(--primary-background);
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
-    transition: transform var(--transition-speed) ease;
-}
-
-.project-links a:hover {
-    transform: scale(1.1);
-    text-decoration: none;
-}
-
-/* 10. Certificates Section */
-.certificates-slider { /* Assuming this might be a slider, basic grid for now */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.certificate-card {
-    background-color: var(--primary-background);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
-    position: relative; /* For info overlay */
-}
-
-.certificate-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(var(--text-primary-color-rgb), 0.07);
-}
-
-.certificate-card img {
-    width: 100%;
-    height: auto; /* Adjust if images have different aspect ratios */
-    aspect-ratio: 16/10; /* Or a fixed height */
-    object-fit: cover;
-}
-
-.certificate-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem 1rem 1rem; /* Adjust padding */
-    background: linear-gradient(to top, rgba(var(--text-primary-color-rgb), 0.85) 0%, rgba(var(--text-primary-color-rgb), 0.7) 50%, transparent 100%);
-    color: var(--primary-background);
-    text-align: center;
-}
-
-.certificate-info h3 {
-    font-size: 1.1rem;
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-    color: var(--primary-background); /* Ensure heading is white */
-    font-weight: 600;
-}
-
-.certificate-info p {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.85); /* Lighter white for subtitle */
-    margin-bottom: 0;
-}
-
-/* 11. Contact Section */
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr; /* Single column default */
-    gap: 3rem;
-}
-
-@media (min-width: 992px) { /* Two columns on larger screens */
-    .contact-content {
-        grid-template-columns: 1fr 2fr;
-    }
-}
-
-.contact-info .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem; /* Space between items */
+    /* Space between items */
     font-size: 1.05rem;
 }
 
 .contact-info .contact-item i {
     font-size: 1.5rem;
     color: var(--accent-color);
-    width: 25px; /* Fixed width for alignment */
+    width: 25px;
+    /* Fixed width for alignment */
     text-align: center;
 }
 
@@ -765,10 +510,23 @@ p {
     resize: vertical;
 }
 
-.contact-form .btn.primary-btn { /* Ensure button in form takes full width or aligns well */
-    width: auto; /* Or 100% if desired */
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+.contact-form .btn.primary-btn {
+    width: 100%;
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-family: var(--body-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.contact-form .btn.primary-btn:hover {
+    background: #444444;
+    color: #fff;
 }
 
 /* 6. General Section Styling */
@@ -776,21 +534,25 @@ section {
     padding: 5rem 2rem;
 }
 
-.container { /* Added container for consistent width */
+.container {
+    /* Added container for consistent width */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem; /* Padding for smaller screens */
+    padding: 0 1rem;
+    /* Padding for smaller screens */
 }
 
 .section-title {
     font-family: var(--heading-font);
     font-size: 2.5rem;
     text-align: center;
-    margin-top: 0; /* Reset margin for section titles */
+    margin-top: 0;
+    /* Reset margin for section titles */
     margin-bottom: 3rem;
     color: var(--text-primary-color);
     position: relative;
-    padding-bottom: 1rem; /* Increased padding for the line */
+    padding-bottom: 1rem;
+    /* Increased padding for the line */
 }
 
 .section-title::after {
@@ -807,12 +569,15 @@ section {
 /* 7. About Section */
 .about-content {
     display: grid;
-    grid-template-columns: 1fr; /* Default to single column */
+    grid-template-columns: 1fr;
+    /* Default to single column */
     gap: 3rem;
     align-items: center;
 }
 
-@media (min-width: 768px) { /* Two columns on larger screens */
+@media (min-width: 768px) {
+
+    /* Two columns on larger screens */
     .about-content {
         grid-template-columns: 2fr 1fr;
     }
@@ -853,10 +618,13 @@ section {
 
 .about-image img {
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    width: 100%; /* Make image responsive */
-    max-width: 350px; /* Max width for the image */
-    margin: 0 auto; /* Center image if it's narrower */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Make image responsive */
+    max-width: 350px;
+    /* Max width for the image */
+    margin: 0 auto;
+    /* Center image if it's narrower */
 }
 
 /* 8. Skills Section */
@@ -885,7 +653,8 @@ section {
 }
 
 .skill-icon i {
-    font-size: 2.5rem; /* Adjust icon size */
+    font-size: 2.5rem;
+    /* Adjust icon size */
     color: var(--accent-color);
 }
 
@@ -899,15 +668,19 @@ section {
 .skill-card p {
     font-size: 0.95rem;
     color: var(--text-secondary-color);
-    margin-bottom: 0; /* Remove default p margin */
+    margin-bottom: 0;
+    /* Remove default p margin */
 }
 
-.skill-level { /* Consider removing or simplifying if not essential */
+.skill-level {
+    /* Consider removing or simplifying if not essential */
     height: 8px;
     background-color: var(--light-gray-background);
     border-radius: 4px;
-    margin: 1rem auto 0; /* Center and add top margin */
-    width: 80%; /* Make it not full width */
+    margin: 1rem auto 0;
+    /* Center and add top margin */
+    width: 80%;
+    /* Make it not full width */
     overflow: hidden;
 }
 
@@ -915,18 +688,25 @@ section {
     height: 100%;
     background-color: var(--accent-color);
     border-radius: 4px;
-    display: block; /* Ensure it's a block for width to apply */
+    display: block;
+    /* Ensure it's a block for width to apply */
 }
 
 .secondary-btn {
-    background-color: transparent;
+    background: transparent;
     color: var(--accent-color);
-    border: 2px solid var(--accent-color);
+    border: 1.5px solid var(--accent-color);
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-family: var(--body-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 .secondary-btn:hover {
-    background-color: var(--accent-color);
-    color: var(--primary-background);
-    transform: translateY(-2px);
-    text-decoration: none;
+    background: var(--accent-color);
+    color: #fff;
+    border-color: #444444;
 }

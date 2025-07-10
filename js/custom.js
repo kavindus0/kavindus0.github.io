@@ -235,3 +235,63 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 	*/
 });
+
+// --- Minimalist transitions and hover/focus effects for desktop ---
+document.addEventListener('DOMContentLoaded', function () {
+	// Fade/slide-in on scroll for major sections and cards
+	const fadeElements = document.querySelectorAll('.section-title, .about-content, .project-card, .certificate-card, .contact-content');
+	function revealOnScroll() {
+		const triggerBottom = window.innerHeight * 0.92;
+		fadeElements.forEach(el => {
+			const rect = el.getBoundingClientRect();
+			if (rect.top < triggerBottom) {
+				el.classList.add('fade-in-element', 'is-visible');
+			}
+		});
+	}
+	window.addEventListener('scroll', revealOnScroll);
+	revealOnScroll();
+
+	// Keyboard focus visible for accessibility
+	const focusable = document.querySelectorAll('.btn, a, .project-card, .certificate-card, input, textarea');
+	focusable.forEach(el => {
+		el.addEventListener('focus', function () {
+			this.classList.add('focus-visible');
+		});
+		el.addEventListener('blur', function () {
+			this.classList.remove('focus-visible');
+		});
+	});
+
+	// Desktop hover effect for project/certificate cards
+	function addHoverEffect(selector, hoverClass) {
+		document.querySelectorAll(selector).forEach(el => {
+			el.addEventListener('mouseenter', function () {
+				this.classList.add(hoverClass);
+			});
+			el.addEventListener('mouseleave', function () {
+				this.classList.remove(hoverClass);
+			});
+		});
+	}
+	addHoverEffect('.project-card', 'card-hover');
+	addHoverEffect('.certificate-card', 'card-hover');
+	addHoverEffect('.btn', 'btn-hover');
+	addHoverEffect('.nav-links a', 'nav-hover');
+
+	// Optional: subtle cursor follower for desktop
+	const cursor = document.querySelector('.cursor-follower');
+	if (cursor) {
+		document.addEventListener('mousemove', e => {
+			cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+		});
+		cursor.style.position = 'fixed';
+		cursor.style.width = '20px';
+		cursor.style.height = '20px';
+		cursor.style.borderRadius = '50%';
+		cursor.style.background = 'rgba(80,80,80,0.13)';
+		cursor.style.pointerEvents = 'none';
+		cursor.style.zIndex = '10000';
+		cursor.style.transition = 'transform 0.13s cubic-bezier(.4,0,.2,1)';
+	}
+});
